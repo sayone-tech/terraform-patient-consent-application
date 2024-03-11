@@ -1,0 +1,15 @@
+aws_region        = "ap-southeast-1"
+aws_profile       = "my-terraform-admin"
+App_Name          = "ExampleAppServerInstance"
+Env_Type          = "dev"
+EC2_AMI           = "ami-0123c9b6bfb7eb962"
+EC2_INSTANCE_TYPE = "t3.micro"
+EC2_PRIVATE_KEY   = "devops-test"
+
+##Optional Envs
+EC2_AZ            = "ap-southeast-1a"
+# EC2_USER_DATA     = "templates/install-docker.sh"
+# EC2_ROOT_VOLUME_TYPE = "gp3"
+# EC2_ROOT_VOLUME_SIZE = "10"
+
+
