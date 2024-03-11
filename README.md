@@ -23,6 +23,7 @@ This terraform config files creates an AWS EC2 instance with security group for 
         ```
     * Create an AWS EC2 Key pair pem file and keep it in local.
     * Create an S3 bucket for terraform backend.
+    * AMI ID of the linux distribution needed should be obtained from the AWS.
 
 ## Providers
 
