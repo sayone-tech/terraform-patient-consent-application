@@ -21,7 +21,6 @@ module "iam" {
     
     ECR_ARN = module.ecr.ecr_arn
     SECRETSMANAGER_ARN = module.secrets_manager.secretsmanager_arn
-
     App_Name              = var.App_Name
     Env_Type              = var.Env_Type
 }
@@ -45,7 +44,7 @@ module "webapp_ec2" {
 
     App_Name              = var.App_Name
     Env_Type              = var.Env_Type
-    EC2_AMI               = var.EC2_AMI
+    EC2_AMI_FILTER        = var.EC2_AMI_FILTER
     EC2_INSTANCE_TYPE     = var.EC2_INSTANCE_TYPE
     EC2_PRIVATE_KEY       = var.EC2_PRIVATE_KEY
     EC2_AZ                = var.EC2_AZ
@@ -53,12 +52,12 @@ module "webapp_ec2" {
     IAM_PROFILE           = module.iam.ec2_iam_profile
 
 #Optional Envs    
-    # EC2_USER_DATA         = var.EC2_USER_DATA
+    EC2_AMI               = var.EC2_AMI
+    EC2_USER_DATA         = var.EC2_USER_DATA
     # EC2_ROOT_VOLUME_TYPE  = var.EC2_ROOT_VOLUME_TYPE
     # EC2_ROOT_VOLUME_SIZE  = var.EC2_ROOT_VOLUME_SIZE
+    # EC2_CPU_CREDITS = var.EC2_CPU_CREDITS
 }
-
-
 
 module "webapp_ip" {
   depends_on      = [module.webapp_ec2]

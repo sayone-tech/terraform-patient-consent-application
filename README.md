@@ -23,7 +23,7 @@ This terraform config files creates an AWS EC2 instance with security group for 
         ```
     * Create an AWS EC2 Key pair pem file and keep it in local.
     * Create an S3 bucket for terraform backend.
-    * AMI ID of the linux distribution needed should be obtained from the AWS.
+    * AMI ID of the linux distribution needed should be obtained from the AWS or terraform will get latest AMI based on filter defined in EC2_AMI_FILTER variable.
 
 ## Providers
 
@@ -42,7 +42,13 @@ AWS.
 
 ## Resources
 
-No resources.
++ EC2
++ Elastic IP
++ Security Group
++ Elastic Container Registry
++ Secrets Manager
++ IAM Role and User
+
 
 ## Inputs
 
@@ -70,12 +76,18 @@ No outputs.
 EC2_AZ= "To update the Ec2 instance AZ"
 EC2_ROOT_VOLUME_TYPE="To update the Ec2 volume type"
 EC2_ROOT_VOLUME_SIZE="To increase the EC2 volume size"
+EC2_CPU_CREDITS="Valid values include standard or unlimited. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default."
 ```
 ## Project setup
 
 * Create terraform backend file *backend.tf* from the given [backend.tf-example](backend.tf-example) file, update the bucket name and other required details.
 
 * Create *terraform.tfvars* from the given [terraform.tfvars-example](terraform.tfvars-example) file.
+
+## Ec2 User data
+
+* Ec2 User data installs docker and docker compose packages and added sayone's jenkins server public key to the server.
+* To update the Ec2 user data update the [template file](templates/install-scripts.sh), or define new file in EC2_USER_DATA variable.
 
 ## Terraform Commands
 
@@ -98,6 +110,5 @@ terraform destroy
 
 
 # Note: 
-Dont push the backend.tf to this template repository.
-
-To setup the project with this clone the project and set the new remote git URL and backend.tf file should be added there.
++ Dont push the backend.tf to this template repository.
++ To setup the project with this clone the project and set the new remote git URL and backend.tf file should be added there.
