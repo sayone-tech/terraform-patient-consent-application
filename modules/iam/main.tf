@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ec2_iam_role" {
-name        =  lower("${var.App_Name}-${var.Env_Type}")
+  name = lower("${var.App_Name}-${var.Env_Type}")
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -30,64 +30,64 @@ resource "aws_iam_policy" "iam_policy_secretsmanager" {
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
   policy = jsonencode({
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Sid": "VisualEditor0",
-                "Effect": "Allow",
-                "Action": [
-                    "secretsmanager:GetResourcePolicy",
-                    "secretsmanager:GetSecretValue",
-                    "secretsmanager:DescribeSecret",
-                    "secretsmanager:ListSecretVersionIds"
-                ],
-                "Resource": "${var.SECRETSMANAGER_ARN}"
-            },
-            {
-                "Sid": "VisualEditor1",
-                "Effect": "Allow",
-                "Action": "secretsmanager:ListSecrets",
-                "Resource": "*"
-            }
-        ]
-    })
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid" : "VisualEditor0",
+        "Effect" : "Allow",
+        "Action" : [
+          "secretsmanager:GetResourcePolicy",
+          "secretsmanager:GetSecretValue",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:ListSecretVersionIds"
+        ],
+        "Resource" : "${var.SECRETSMANAGER_ARN}"
+      },
+      {
+        "Sid" : "VisualEditor1",
+        "Effect" : "Allow",
+        "Action" : "secretsmanager:ListSecrets",
+        "Resource" : "*"
+      }
+    ]
+  })
 }
 
 resource "aws_iam_policy" "iam_policy_ecr" {
   name = lower("${var.App_Name}-${var.Env_Type}-ecr")
-#   role = aws_iam_role.ec2_iam_role.id
+  #   role = aws_iam_role.ec2_iam_role.id
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
   policy = jsonencode({
-      "Version": "2012-10-17",
-      "Statement": [
-          {
-              "Sid": "VisualEditor0",
-              "Effect": "Allow",
-              "Action": [
-                  "ecr:GetRegistryPolicy",
-                  "ecr:DescribeRegistry",
-                  "ecr:DescribePullThroughCacheRules",
-                  "ecr:GetAuthorizationToken",
-                  "ecr:PutRegistryScanningConfiguration",
-                  "ecr:DeleteRegistryPolicy",
-                  "ecr:CreatePullThroughCacheRule",
-                  "ecr:DeletePullThroughCacheRule",
-                  "ecr:PutRegistryPolicy",
-                  "ecr:GetRegistryScanningConfiguration",
-                  "ecr:PutReplicationConfiguration",
-                  "ecr:CompleteLayerUpload"
-              ],
-              "Resource": "*"
-          },
-          {
-              "Sid": "VisualEditor1",
-              "Effect": "Allow",
-              "Action": "ecr:*",
-              "Resource": "${var.ECR_ARN}"
-          }
-      ]
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid" : "VisualEditor0",
+        "Effect" : "Allow",
+        "Action" : [
+          "ecr:GetRegistryPolicy",
+          "ecr:DescribeRegistry",
+          "ecr:DescribePullThroughCacheRules",
+          "ecr:GetAuthorizationToken",
+          "ecr:PutRegistryScanningConfiguration",
+          "ecr:DeleteRegistryPolicy",
+          "ecr:CreatePullThroughCacheRule",
+          "ecr:DeletePullThroughCacheRule",
+          "ecr:PutRegistryPolicy",
+          "ecr:GetRegistryScanningConfiguration",
+          "ecr:PutReplicationConfiguration",
+          "ecr:CompleteLayerUpload"
+        ],
+        "Resource" : "*"
+      },
+      {
+        "Sid" : "VisualEditor1",
+        "Effect" : "Allow",
+        "Action" : "ecr:*",
+        "Resource" : "${var.ECR_ARN}"
+      }
+    ]
   })
 }
 

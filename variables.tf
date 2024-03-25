@@ -19,13 +19,13 @@ variable "aws_credentials_file" {
 
 #resource Env variables
 variable "App_Name" {
-    type = string
-    description = "Application Name"
+  type        = string
+  description = "Application Name"
 }
 
 variable "Env_Type" {
-    type = string
-    description = "Application Env type"
+  type        = string
+  description = "Application Env type"
 }
 
 variable "EC2_AMI" {
@@ -65,14 +65,14 @@ variable "EC2_AZ" {
 }
 
 variable "EC2_ROOT_VOLUME_TYPE" {
-    description = "Ec2 Root Volume type"
-    default = "gp2"
+  description = "Ec2 Root Volume type"
+  default     = "gp2"
 }
 
 variable "EC2_ROOT_VOLUME_SIZE" {
-    type = number
-    description = "Ec2 Root Volume Size"
-    default = "8"
+  type        = number
+  description = "Ec2 Root Volume Size"
+  default     = "8"
 }
 
 variable "EC2_CPU_CREDITS" {

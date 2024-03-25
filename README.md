@@ -68,7 +68,15 @@ AWS.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_AWS_ECR_URL"></a> [AWS\_ECR\_URL](#output\_AWS\_ECR\_URL) | Ec2 Security Group ID |
+| <a name="output_EC2_instance_ID"></a> [EC2\_instance\_ID](#output\_EC2\_instance\_ID) | Ec2 Instance ID |
+| <a name="output_EC2_instance_Private_IP"></a> [EC2\_instance\_Private\_IP](#output\_EC2\_instance\_Private\_IP) | Ec2  Private IP |
+| <a name="output_EC2_instance_Public_IP"></a> [EC2\_instance\_Public\_IP](#output\_EC2\_instance\_Public\_IP) | Ec2 Public IP |
+| <a name="output_EC2_instance_SG"></a> [EC2\_instance\_SG](#output\_EC2\_instance\_SG) | Ec2 Security Group ID |
+| <a name="output_Secrets_Manger_ARN"></a> [Secrets\_Manger\_ARN](#output\_Secrets\_Manger\_ARN) | Secrets Manager ARN |
+
 
 ## Optione env variables
 
@@ -111,4 +119,6 @@ terraform destroy
 
 # Note: 
 + Dont push the backend.tf to this template repository.
++ Always run ```terraform fmt``` command ebfore commiting the changes and update the changes in [README.md](README.md) file.
 + To setup the project with this clone the project and set the new remote git URL and backend.tf file should be added there.
++ Iam user created specific to sayone's backend deployment process. Create new module for custom IAM user requirements until template fixed.
