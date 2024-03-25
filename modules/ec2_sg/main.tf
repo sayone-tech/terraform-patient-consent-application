@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg_ec2" {
-  name        = "${var.App_Name}-${var.Env_Type}-web"
+  name        = "${var.App_Name}-${var.Name}-${var.Env_Type}-web"
   description = "Allow TLS inbound traffic"
   # vpc_id      =  data.aws_vpc.default.id
 

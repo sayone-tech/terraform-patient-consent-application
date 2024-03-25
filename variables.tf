@@ -18,6 +18,12 @@ variable "aws_credentials_file" {
 }
 
 #resource Env variables
+variable "Name" {
+  type        = string
+  default     = "App"
+  description = "Service Name to be added with the resource"
+}
+
 variable "App_Name" {
   type        = string
   description = "Application Name"

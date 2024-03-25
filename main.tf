@@ -1,5 +1,6 @@
 module "secrets_manager" {
   source   = "./modules/secrets_manager"
+  Name     = var.Name
   App_Name = var.App_Name
   Env_Type = var.Env_Type
 
@@ -7,6 +8,7 @@ module "secrets_manager" {
 
 module "ecr" {
   source   = "./modules/ecr"
+  Name     = var.Name
   App_Name = var.App_Name
   Env_Type = var.Env_Type
 
@@ -21,6 +23,7 @@ module "iam" {
 
   ECR_ARN            = module.ecr.ecr_arn
   SECRETSMANAGER_ARN = module.secrets_manager.secretsmanager_arn
+  Name               = var.Name # add IAM role name required here
   App_Name           = var.App_Name
   Env_Type           = var.Env_Type
 }
@@ -28,6 +31,7 @@ module "iam" {
 
 module "webapp_ec2_sg" {
   source   = "./modules/ec2_sg"
+  Name     = var.Name
   App_Name = var.App_Name
   Env_Type = var.Env_Type
 
@@ -42,6 +46,7 @@ module "webapp_ec2" {
   ]
   source = "./modules/ec2"
 
+  Name              = var.Name
   App_Name          = var.App_Name
   Env_Type          = var.Env_Type
   EC2_AMI_FILTER    = var.EC2_AMI_FILTER
