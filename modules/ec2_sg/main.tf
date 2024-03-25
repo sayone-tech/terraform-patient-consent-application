@@ -19,23 +19,23 @@ resource "aws_security_group" "sg_ec2" {
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
-  }  
+  }
 
   ingress {
-    description      = "Ssh connection to EC2 From Local"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-     cidr_blocks = ["${chomp(data.http.my_local_ip.response_body)}/32"]
-  }  
+    description = "Ssh connection to EC2 From Local"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["${chomp(data.http.my_local_ip.response_body)}/32"]
+  }
 
   ingress {
-    description      = "Ssh connection to EC2 From Sayone Jenkins"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-     cidr_blocks = ["34.71.28.1/32"]
-  }     
+    description = "Ssh connection to EC2 From Sayone Jenkins"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["34.71.28.1/32"]
+  }
 
   egress {
     from_port        = 0
@@ -52,5 +52,5 @@ resource "aws_security_group" "sg_ec2" {
 # }
 
 data "http" "my_local_ip" {
-    url = "https://ipv4.icanhazip.com"
+  url = "https://ipv4.icanhazip.com"
 }

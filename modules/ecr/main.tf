@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "ecr" {
-  name        =  lower("${var.App_Name}/${var.Env_Type}")
+  name = lower("${var.App_Name}/${var.Env_Type}")
   # image_tag_mutability = "MUTABLE"
 
   # image_scanning_configuration {

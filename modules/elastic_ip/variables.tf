@@ -1,5 +1,5 @@
 variable "EC2_INSTANCE_ID" {
-    description = "Ec2 Elastic IP"
+  description = "Ec2 Elastic IP"
 }
 
 # variable "APP_NAME" {
