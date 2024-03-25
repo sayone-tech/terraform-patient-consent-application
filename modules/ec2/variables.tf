@@ -4,6 +4,11 @@ variable "aws_region" {
   default     = "ap-southeast-1"
 }
 
+variable "Name" {
+  type        = string
+  description = "Name of the service to be added"
+}
+
 variable "App_Name" {
   type        = string
   description = "Application Name"

@@ -62,6 +62,7 @@ AWS.
 | <a name="input_EC2_ROOT_VOLUME_SIZE"></a> [EC2\_ROOT\_VOLUME\_SIZE](#input\_EC2\_ROOT\_VOLUME\_SIZE) | Ec2 Root Volume Size | `number` | `"8"` | no |
 | <a name="input_EC2_ROOT_VOLUME_TYPE"></a> [EC2\_ROOT\_VOLUME\_TYPE](#input\_EC2\_ROOT\_VOLUME\_TYPE) | Ec2 Root Volume type | `string` | `"gp2"` | no |
 | <a name="input_Env_Type"></a> [Env\_Type](#input\_Env\_Type) | Application Env type | `string` | n/a | yes |
+| <a name="input_Name"></a> [Name](#input\_Name) | Service Name to be added with the resource | `string` | `"App"` | no |
 | <a name="input_aws_credentials_file"></a> [aws\_credentials\_file](#input\_aws\_credentials\_file) | AWS credentials file in local | `list(string)` | <pre>[<br>  "~/.aws/credentials"<br>]</pre> | no |
 | <a name="input_aws_profile"></a> [aws\_profile](#input\_aws\_profile) | AWS profile | `string` | `"default"` | no |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"ap-southeast-1"` | no |
@@ -112,6 +113,9 @@ terraform plan
 # Terraform Apply
 terraform apply
 
+# Format the config files
+terraform fmt -recursive
+
 # Clean-Up
 terraform destroy
 ```
@@ -119,6 +123,7 @@ terraform destroy
 
 # Note: 
 + Dont push the backend.tf to this template repository.
-+ Always run ```terraform fmt``` command ebfore commiting the changes and update the changes in [README.md](README.md) file.
++ Always run ```terraform fmt -recursive``` command ebfore commiting the changes and update the changes in [README.md](README.md) file.
 + To setup the project with this clone the project and set the new remote git URL and backend.tf file should be added there.
 + Iam user created specific to sayone's backend deployment process. Create new module for custom IAM user requirements until template fixed.
++ Update the value of `Name` variable in modules to incase of naming multiple resources.

@@ -42,4 +42,8 @@ resource "aws_instance" "app_server" {
     cpu_credits = var.EC2_CPU_CREDITS
   }
 
+  tags = {
+    "Name" = "${var.App_Name}-${var.Name}-${var.Env_Type}"
+  }
+
 }
