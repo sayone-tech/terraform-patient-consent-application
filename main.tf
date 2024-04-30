@@ -64,9 +64,9 @@ module "webapp_ec2" {
   # EC2_CPU_CREDITS = var.EC2_CPU_CREDITS
 }
 
-module "webapp_ip" {
-  depends_on = [module.webapp_ec2]
-  source     = "./modules/elastic_ip"
+# module "webapp_ip" {
+#   depends_on = [module.webapp_ec2]
+#   source     = "./modules/elastic_ip"
 
-  EC2_INSTANCE_ID = module.webapp_ec2.EC2_INSTANCE_ID
-}
+#   EC2_INSTANCE_ID = module.webapp_ec2.EC2_INSTANCE_ID
+# }
